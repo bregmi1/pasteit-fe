@@ -1,6 +1,8 @@
 <h2>Pastes</h2>
 <p>Select a paste from the list below.</p>
 <div *ngFor="let paste of pastes" class="panel panel-default">
-    <div class="panel-heading">{{paste.title}}</div>
+    <div class="panel-heading">
+        <a [routerLink]="paste.pasteId">{{paste.title}} </a>
+    </div>
     <div class="panel-body">{{paste.body}}</div>
 </div>

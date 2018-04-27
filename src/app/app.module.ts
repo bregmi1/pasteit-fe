@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { PasteListComponent } from './paste-list/paste-list.component';
 import { HeaderLinksComponent } from './header-links/header-links.component';
+import { PasteDetailsComponent } from './paste-details/paste-details.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { HeaderLinksComponent } from './header-links/header-links.component';
         AppComponent,
         HeaderComponent,
         PasteListComponent,
-        HeaderLinksComponent
+        HeaderLinksComponent,
+        PasteDetailsComponent
     ],
     imports: [
         BrowserModule,
@@ -26,6 +28,10 @@ import { HeaderLinksComponent } from './header-links/header-links.component';
             {
                 path: 'pastes',
                 component: PasteListComponent
+            },
+            {
+                path: 'pastes/:pasteId',
+                component: PasteDetailsComponent
             }
         ])
     ],
