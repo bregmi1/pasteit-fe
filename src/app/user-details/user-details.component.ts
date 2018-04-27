@@ -7,5 +7,15 @@ import { Component } from '@angular/core';
     styleUrls: ['./user-details.component.css']
 })
 export class UserDetailsComponent{
+    private user: object;
+
+    constructor(){
+        this.user = {
+            'name': 'John Doe',
+            'email': 'john@example.com',
+            'password': 'password',
+            'createdOn': 1234567890
+        }
+    }
 
 }
