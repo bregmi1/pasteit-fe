@@ -27,4 +27,8 @@ export class PasteService{
         return this.http.post<Paste>(`${this.url}/`, paste);
     }
 
+    updatePaste(pasteId: number, paste: Paste): Observable<Paste>{
+        return this.http.put<Paste>(`${this.url}/${pasteId}`, paste);
+    }
+
 }

@@ -16,6 +16,7 @@ import { componentFactoryName } from '@angular/compiler';
 import { PasteService } from './paste-service/paste.service';
 import { UserService } from './user-service/user.service';
 import { UserFormComponent } from './user-form/user-form.component';
+import { PasteCardComponent } from './paste-card/paste-card.component';
 
 
 
@@ -27,6 +28,7 @@ import { UserFormComponent } from './user-form/user-form.component';
         HeaderLinksComponent,
         PasteDetailsComponent,
         PasteFormComponent,
+        PasteCardComponent,
         UserDetailsComponent,
         UserFormComponent
     ],
@@ -51,6 +53,10 @@ import { UserFormComponent } from './user-form/user-form.component';
             {
                 path: 'pastes/:pasteId',
                 component: PasteDetailsComponent
+            },
+            {
+                path: 'pastes/:pasteId/update',
+                component: PasteFormComponent
             },
             {
                 path: 'user',
