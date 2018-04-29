@@ -1,5 +1,3 @@
-
-
 export class Paste{
     pasteId: number;
     title: string;

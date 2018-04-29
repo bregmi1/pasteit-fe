@@ -1,0 +1,38 @@
+<h1>Paste form</h1>
+<form>
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title" 
+            required 
+            [(ngModel)]="paste.title">
+    </div>
+
+    <div class="form-group">
+            <textarea class="form-control" rows=15 name="body" [(ngModel)]="paste.body" required> 
+            </textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="expiresOn">Expires on</label>
+        <input type="number" class="form-control" id="expiresOn" name="expiresOn" 
+            [(ngModel)]="paste.expiresOn"
+            required>
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="submitPaste()">Submit</button>
+</form>
+
+<div *ngIf="error" class="alert alert-danger">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>
+    {{error.error.message ? error.error.message : 'There was an error saving the paste'}}
+</div>
+
+<p>
+   TODO: paste.title: {{paste.title}}
+</p>
+<p>
+   TODO: paste.body: {{paste.body}}
+</p>
+<p>
+   TODO: paste.expiresOn: {{paste.expiresOn}}
+</p>

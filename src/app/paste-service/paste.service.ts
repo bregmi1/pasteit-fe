@@ -23,4 +23,8 @@ export class PasteService{
         return this.http.get<Paste>(`${this.url}/${pasteId}`);
     }
 
+    createPaste(paste: Paste): Observable<Paste>{
+        return this.http.post<Paste>(`${this.url}/`, paste);
+    }
+
 }
