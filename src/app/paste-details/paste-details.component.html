@@ -1,4 +1,4 @@
-<div class="paste panel">
+<div *ngIf="paste" class="paste panel">
     <h2>{{paste.title}}</h2>
     <p>{{paste.body}}</p>
 
@@ -20,4 +20,9 @@
             </tr>
         </tbody>
     </table>
+</div>
+
+<div *ngIf="error" class="alert alert-danger">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>
+    {{error.error.message ? error.error.message : 'There was an error retrieving the paste.'}}
 </div>

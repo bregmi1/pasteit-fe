@@ -6,3 +6,8 @@
     </div>
     <div class="panel-body">{{paste.body}}</div>
 </div>
+
+<div *ngIf="error" class="alert alert-danger">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>
+    {{error.error.message ? error.error.message : 'There was an error retrieving the pastes.'}}
+</div>

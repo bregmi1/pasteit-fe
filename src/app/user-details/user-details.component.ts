@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../user-service/user.service';
+import { User } from '../user-service/user';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     selector: 'user-details',
@@ -7,15 +10,15 @@ import { Component } from '@angular/core';
     styleUrls: ['./user-details.component.css']
 })
 export class UserDetailsComponent{
-    private user: object;
+    private userId: number = 1;
+    private user: User;
+    private error: HttpErrorResponse;
 
-    constructor(){
-        this.user = {
-            'name': 'John Doe',
-            'email': 'john@example.com',
-            'password': 'password',
-            'createdOn': 1234567890
-        }
+    constructor( userService: UserService){
+        userService.getUserById(this.userId).subscribe(
+            user => this.user = user,
+            error => this.error = error
+        );
     }
 
 }
