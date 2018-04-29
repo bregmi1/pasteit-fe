@@ -36,7 +36,7 @@ export class PasteFormComponent{
     submitPaste(){
         if(this.pasteId){
             this.pasteService.updatePaste(this.pasteId, this.paste).subscribe(
-                paste => this.paste = paste,
+                paste => this.router.navigate(['pastes', this.pasteId]),
                 error => this.error = error
             );
         } else {

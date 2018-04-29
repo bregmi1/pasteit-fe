@@ -3,6 +3,7 @@ import { UserService } from "../user-service/user.service";
 import { User } from "../user-service/user";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Router } from "@angular/router";
+import { PasteService } from "../paste-service/paste.service";
 
 
 @Component({
@@ -13,6 +14,7 @@ import { Router } from "@angular/router";
 })
 export class UserFormComponent{
     private userService: UserService;
+    private userId: number;
     private user: User;
     private error: HttpErrorResponse;
     private router: Router;
@@ -20,14 +22,28 @@ export class UserFormComponent{
     constructor(router: Router, userService: UserService){
         this.userService = userService;
         this.router = router;
-        this.user = new User();
+        if(this.userId){
+            this.userService.getUserById(this.userId).subscribe(
+                user => this.user = user,
+                error => this.error = error
+            );
+        } else{
+            this.user = new User();
+        }
     }
 
     submitUser(){
-        this.userService.createUser(this.user).subscribe(
-            user => this.router.navigate(['user']),
-            error => this.error = error
-        )
+        if(this.userId){
+            this.userService.updateUser(this.userId, this.user).subscribe(
+                user => this.router.navigate(['user']),
+                error => this.error = error
+            );
+        }else{
+            this.userService.createUser(this.user).subscribe(
+                user => this.router.navigate(['user']),
+                error => this.error = error
+            );
+        }
     }
 
 }
