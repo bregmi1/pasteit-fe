@@ -15,6 +15,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { componentFactoryName } from '@angular/compiler';
 import { PasteService } from './paste-service/paste.service';
 import { UserService } from './user-service/user.service';
+import { UserFormComponent } from './user-form/user-form.component';
 
 
 
@@ -26,7 +27,8 @@ import { UserService } from './user-service/user.service';
         HeaderLinksComponent,
         PasteDetailsComponent,
         PasteFormComponent,
-        UserDetailsComponent
+        UserDetailsComponent,
+        UserFormComponent
     ],
     imports: [
         BrowserModule,
@@ -53,6 +55,10 @@ import { UserService } from './user-service/user.service';
             {
                 path: 'user',
                 component: UserDetailsComponent
+            },
+            {
+                path: 'user/create',
+                component: UserFormComponent
             }
         ])
     ],

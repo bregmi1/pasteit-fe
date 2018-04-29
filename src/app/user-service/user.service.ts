@@ -17,4 +17,8 @@ export class UserService{
         return this.http.get<User>(`${this.url}/${userId}`);
     }
 
+    createUser(user: User): Observable<User>{
+        return this.http.post<User>(`${this.url}/`, user);
+    }
+
 }

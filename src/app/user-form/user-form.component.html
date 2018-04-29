@@ -1,0 +1,36 @@
+<h1>Sign Up form</h1>
+<form>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" 
+            required 
+            [(ngModel)]="user.name">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" name="email" 
+            [(ngModel)]="user.email"
+            required>
+    </div>
+
+    <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" 
+                [(ngModel)]="user.password"
+                required>
+    </div>
+
+    <div class="form-group">
+            <label for="passwordConfirmarion">Confirm Password</label>
+            <input type="passwordConfirmation" class="form-control" id="passwordConfirmation" name="passwordConfirmation" 
+                required>
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="submitPaste()">Submit</button>
+</form>
+
+<div *ngIf="error" class="alert alert-danger">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>
+    {{error.error.message ? error.error.message : 'There was an error saving the paste'}}
+</div>
