@@ -31,4 +31,8 @@ export class PasteService{
         return this.http.put<Paste>(`${this.url}/${pasteId}`, paste);
     }
 
+    deletePaste(pasteId: number): Observable<Paste>{
+        return this.http.delete<Paste>(`${this.url}/${pasteId}`);
+    }
+
 }

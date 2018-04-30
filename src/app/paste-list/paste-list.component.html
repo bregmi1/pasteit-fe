@@ -3,7 +3,7 @@
     <div routerLink="create" class="btn btn-primary pull-right">Create Paste</div>
 </h2>
 <p>Select a paste from the list below.</p>
-<paste-card *ngFor="let paste of pastes" [paste]="paste"></paste-card>
+<paste-card *ngFor="let paste of pastes" [paste]="paste" (pasteDeleted)="handlePasteDeleted($event)"></paste-card>
 
 <div *ngIf="error" class="alert alert-danger">
     <span class="glyphicon glyphicon-exclamation-sign"></span>

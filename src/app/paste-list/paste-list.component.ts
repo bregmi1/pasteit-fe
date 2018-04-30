@@ -11,11 +11,26 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class PasteListComponent{
     private pastes: Paste[];
     private error: HttpErrorResponse;
+    private pasteService: PasteService;
 
     constructor(pasteService: PasteService){
-        pasteService.getAllPastes().subscribe(
+        this.pasteService = pasteService;
+        this.pasteService.getAllPastes().subscribe(
             pastes => this.pastes = pastes,
             error => this.error = error
         );
+    }
+
+
+    handlePasteDeleted(paste: Paste){
+        this.pasteService.deletePaste(paste.pasteId).subscribe(
+            paste => this.deletePasteFromList(paste.pasteId),
+            error => this.error = error
+        );
+    }
+
+    deletePasteFromList(pasteId: number){
+        const index: number = this.pastes.findIndex(paste => paste.pasteId === pasteId);
+        this.pastes.splice(index, 1);
     }
 }

@@ -1,6 +1,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <a [routerLink]="paste.pasteId">{{paste.title}}</a>
+        <div class="glyphicon glyphicon-remove pull-right" (click)="deletePaste()"></div>
     </div>
     <div class="panel-body">{{paste.body}}</div>
 </div>
