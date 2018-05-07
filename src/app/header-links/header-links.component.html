@@ -1,10 +1,35 @@
 <div class="navbar-collapse">
-    <ul class="nav navbar-nav navbar-right">
-        <li [ngClass]="{'active': currentRoute === 'pastes'}"> 
-            <a (click)="goToRoute('pastes')">Pastes</a> 
-        </li>
-        <li [ngClass]="{'active': currentRoute === 'user'}">
-            <a (click)="goToRoute('user')">Profile</a>
-        </li>
-    </ul>
+    
+
+        <div *ngIf="!(isLoggedIn | async)" >
+            <ul class="nav navbar-nav navbar-right">
+                <li [ngClass]="{'active': currentRoute === 'login'}">
+                        <a (click)="goToRoute('login')">Login</a>
+                </li>
+                <li [ngClass]="{'active': currentRoute === 'search'}">
+                        <a (click)="goToRoute('search')">Search</a>
+                </li>
+            </ul>
+        </div>
+        
+        <div *ngIf="(isLoggedIn | async)">
+            <ul class="nav navbar-nav navbar-right">
+                <li [ngClass]="{'active': currentRoute === 'pastes'}"> 
+                    <a (click)="goToRoute('pastes')">Pastes</a> 
+                </li>
+                <li [ngClass]="{'active': currentRoute === 'user'}">
+                    <a (click)="goToRoute('user')">Profile</a>
+                </li>
+                <li [ngClass]="{'active': currentRoute === 'search'}">
+                        <a (click)="goToRoute('search')">Search</a>
+                </li>
+                <li [ngClass]="{'active': currentRoute === 'logout'}">
+                        <a (click)="authService.logout()">Logout</a>
+                </li>
+            </ul>
+        </div>
+
+        
+
+    
 </div>

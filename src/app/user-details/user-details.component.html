@@ -1,5 +1,8 @@
 <div *ngIf="user" class="user panel">
-    <h2>{{user.name}}</h2>
+    <h2>
+        {{user.name}}
+        <div routerLink="update" class="btn btn-primary pull-right">Update User</div>
+    </h2>
     <p>{{user.email}}</p>
 
 

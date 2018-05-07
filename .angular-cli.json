@@ -13,7 +13,8 @@
  
              "tsconfig": "tsconfig.app.json",
             "styles": [
-                "styles.css"
+                "styles.css",
+                "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css"
             ],
             "assets": [
                 "assets"

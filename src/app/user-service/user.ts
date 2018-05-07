@@ -1,9 +1,7 @@
-
-
 export class User{
-    private userId: number;
-    private name: string;
-    private email: string;
-    private password: string;
-    private createdOn: number;
+    userId: number;
+    name: string;
+    email: string;
+    password: string;
+    createdOn: number;
 }

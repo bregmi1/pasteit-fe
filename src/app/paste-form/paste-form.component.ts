@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Paste } from '../paste-service/paste';
 import { PasteService } from '../paste-service/paste.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+
 import { 
     Router,
     ActivatedRoute 
@@ -18,19 +20,34 @@ export class PasteFormComponent{
     private pasteService: PasteService;
     private error: HttpErrorResponse;
     private router: Router;
+    private date: string;
+    private datePickerConfig: Partial<BsDatepickerConfig>;
 
     constructor(router: Router, route: ActivatedRoute, pasteService: PasteService){
         this.pasteService = pasteService;
         this.router = router;
         route.params.subscribe(params => this.pasteId = params['pasteId']);
+        this.datePickerConfig = Object.assign({}, {
+            containerClass: 'theme-dark-blue',
+            showWeekNumbers: false,
+            minDate: new Date()
+        });
         if(this.pasteId){
             pasteService.getPasteById(this.pasteId).subscribe(
-                paste => this.paste = paste,
+                paste => {
+                    this.paste = paste;
+                },
                 error => this.error = error
             );
         } else {
             this.paste = new Paste();
+            this.date = null;
         }
+    }
+
+    isValid(): boolean{
+
+        return true;
     }
 
     submitPaste(){
@@ -45,6 +62,12 @@ export class PasteFormComponent{
                 error => this.error = error
             );
         }
+    }
+
+    dateChanged(value: string): void{
+        const d: Date = new Date(value);
+        const l: number = d.getTime();
+        this.paste.expiresOn = l;
     }
 
 }

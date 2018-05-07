@@ -15,7 +15,7 @@ export class UserDetailsComponent{
     private error: HttpErrorResponse;
 
     constructor( userService: UserService){
-        userService.getUserById(this.userId).subscribe(
+        userService.getUser().subscribe(
             user => this.user = user,
             error => this.error = error
         );

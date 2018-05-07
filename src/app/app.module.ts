@@ -17,7 +17,9 @@ import { PasteService } from './paste-service/paste.service';
 import { UserService } from './user-service/user.service';
 import { UserFormComponent } from './user-form/user-form.component';
 import { PasteCardComponent } from './paste-card/paste-card.component';
-
+import { LoginComponent } from './login/login.component';
+import { AuthenticationService } from './authentication-service/authentication.service';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 @NgModule({
@@ -30,17 +32,23 @@ import { PasteCardComponent } from './paste-card/paste-card.component';
         PasteFormComponent,
         PasteCardComponent,
         UserDetailsComponent,
-        UserFormComponent
+        UserFormComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
+        BsDatepickerModule.forRoot(),
         FormsModule,
         RouterModule.forRoot([
             {
                 path: '', 
-                redirectTo: 'pastes',
+                redirectTo: 'login',
                 pathMatch: 'full'
+            },
+            {
+                path:'login',
+                component: LoginComponent
             },
             {
                 path: 'pastes',
@@ -65,12 +73,17 @@ import { PasteCardComponent } from './paste-card/paste-card.component';
             {
                 path: 'user/create',
                 component: UserFormComponent
+            },
+            {
+                path: 'user/update',
+                component: UserFormComponent
             }
         ])
     ],
     providers: [
         PasteService,
-        UserService
+        UserService,
+        AuthenticationService
     ],
     bootstrap: [ AppComponent ]
  })
